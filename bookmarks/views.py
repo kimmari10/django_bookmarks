@@ -3,19 +3,15 @@
 # Create your views here.
 
 from django.http import HttpResponse
+from django.template import Context
+from django.template.loader import get_template
 
 def main_page(request):
-	output = '''
-		<html>
-			<head><title>%s</title></head>
-				<body>
-					<h1>%s</h1><p>%s</p>
-				</body>
-			</html>
-	''' % (
-		'django test page',
-		'장고 북마크에 오신 것을 환영합니다.',
-		'여기에 북마크를 저장하고 공유할 수 있습니다!'
-	)
+	template = get_template('main_page.html')
+	variables = Context({
+		'head_title': 'django bookmark',
+		'page_title': 'welcome to django bookmark',
+		'page_body': 'share and add to bookmarks',
+		})
+	output = template.render(variables)
 	return HttpResponse(output)
-
