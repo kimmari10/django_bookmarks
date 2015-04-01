@@ -1,0 +1,17 @@
+<html>
+ <head>
+  <title>django bookmark</title>
+ </head>
+ <body>
+  <h1>{{username}}'s bookmark</h1>
+  {% if bookmarks %}
+   <ul>
+    {% for bookmark in bookmarks %}
+     <li><a href="{{ bookmark.link.url }}">{{ bookmark.title }}</a></li>
+     {% endfor %}
+   </ul>
+  {% else %}
+   <p>bookmark is nothig</p>
+  {% endif %}
+ </body>
+</html>
