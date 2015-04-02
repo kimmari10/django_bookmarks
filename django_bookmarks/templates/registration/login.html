@@ -1,0 +1,17 @@
+<html>
+ <head>
+  <title>django's bookmark - login page</title>
+ </head>
+ <body>
+  <h1>user login</h1>
+  {% if form.has_errors %}
+   <p>retry</p>
+  {% endif %}
+  <form action="." method="post"><p><label for="id_username">user name:</label>{{ form.username }}</p>
+   <p><label for="id_password">password:</label>{{ form.password }}</p>
+   <input type="hidden" name="next" value="/" />
+   <input type="submit" value="login" />
+   {% csrf_token %}
+  </form>
+ </body>
+</html>

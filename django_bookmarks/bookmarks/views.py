@@ -9,15 +9,17 @@ from django.template.loader import get_template
 from django.http import HttpResponse, Http404
 from django.contrib.auth.models import User
 
+from django.shortcuts import render_to_response
+
 def main_page(request):
-	template = get_template('main_page.html')
-	variables = Context({
-		'head_title': 'django bookmark',
-		'page_title': 'welcome to django bookmark',
-		'page_body': 'share and add to bookmarks',
-		})
-	output = template.render(variables)
-	return HttpResponse(output)
+	#template = get_template('main_page.html')
+	#variables = Context({ 'user': request.user })
+	#output = template.render(variables)
+	#return HttpResponse(output)
+	return render_to_response(
+		'main_page.html',
+		{ 'user':request.user }
+		)
 
 def user_page(request, username):
 	try:

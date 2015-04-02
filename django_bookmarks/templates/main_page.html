@@ -1,9 +1,13 @@
 <html>
  <head>
-  <title>{{ head_title }}</title>
+  <title>django bookmark</title>
  </head>
  <body>
-  <h1>{{ page_title }}</h1>
-  <p>{{ page_body }}</p>
+  <h1>welcome to django bookmark</h1>
+  {% if user.username %}  
+   <p>Hello {{ user.username }}, you can share and store bookmarks here.</p>
+  {% else %}
+   <p> Hello!, Login <a href="/login/">Here</a> </p>
+  {% endif %}
  </body>
 </html>
