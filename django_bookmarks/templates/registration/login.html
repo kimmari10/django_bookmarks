@@ -1,8 +1,7 @@
-<html>
- <head>
-  <title>django's bookmark - login page</title>
- </head>
- <body>
+{% extends "base.html" %}
+{% block head %}user login{% endblock %}
+{% block title %}user login{% endblock %}
+{% block content %}
   <h1>user login</h1>
   {% if form.has_errors %}
    <p>retry</p>
@@ -13,5 +12,4 @@
    <input type="submit" value="login" />
    {% csrf_token %}
   </form>
- </body>
-</html>
+{% endblock %}

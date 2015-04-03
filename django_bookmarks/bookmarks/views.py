@@ -11,6 +11,9 @@ from django.contrib.auth.models import User
 
 from django.shortcuts import render_to_response
 
+from django.http import HttpResponseRedirect
+from django.contrib.auth import logout
+
 def main_page(request):
 	#template = get_template('main_page.html')
 	#variables = Context({ 'user': request.user })
@@ -36,3 +39,8 @@ def user_page(request, username):
 		})
 	output = template.render(variables)
 	return HttpResponse(output)
+
+def logout_page(request):
+	logout(request)
+	return HttpResponseRedirect('/')
+
