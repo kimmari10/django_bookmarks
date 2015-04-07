@@ -33,3 +33,21 @@ class RegistrationForm(forms.Form):
   except ObjectDoesNotExist:
    return username
   raise forms.ValidationError('already exist ID')
+
+
+class BookmarkSaveForm(forms.Form):
+ url = forms.URLField(
+  label = 'address',
+  widget = forms.TextInput(attrs={'size':64})
+ )
+
+ title = forms.CharField(
+  label = 'title',
+  widget = forms.TextInput(attrs={'size':64})
+ )
+
+ tags = forms.CharField(
+  label = 'tag',
+  required=False,
+  widget = forms.TextInput(attrs={'size':64})
+ )
