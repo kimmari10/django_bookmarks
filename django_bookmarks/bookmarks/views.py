@@ -19,6 +19,8 @@ from django_bookmarks.bookmarks.models import *
 
 from django.contrib.auth.decorators import login_required
 
+from django.shortcuts import get_object_or_404
+
 def main_page(request):
 	#template = get_template('main_page.html')
 	#variables = Context({ 'user': request.user })
@@ -29,17 +31,14 @@ def main_page(request):
 		)
 @login_required
 def user_page(request, username):
-	try:
-		user = User.objects.get(username=username)
-	except:
-		raise Http404('Dont search users')
-	
-	bookmarks = user.bookmark_set.all()
+	user = get_object_or_404(User, username=username)
+	bookmarks = user.bookmark_set.order_by('-id')
 	
 	template = get_template('user_page.html')
 	variables = RequestContext(request, {
 		'username': username,
-		'bookmarks': bookmarks
+		'bookmarks': bookmarks,
+		'show_tags': True
 		})
 	output = template.render(variables)
 	return HttpResponse(output)
