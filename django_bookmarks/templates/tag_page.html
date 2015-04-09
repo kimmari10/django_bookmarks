@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Tag : {{ tag_name }}{% endblock %}
-{% block head %}Tag "{{ tag_name }}"'s bookmark {% endblock %}
+{% block title %}Tag : {{ tag_name|escape }}{% endblock %}
+{% block head %}Tag "{{ tag_name|escape }}"'s bookmark {% endblock %}
 {% block content %}
 	{% include "bookmark_list.html" %}
 {% endblock %}
