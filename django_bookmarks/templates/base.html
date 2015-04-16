@@ -13,6 +13,7 @@
    <a href="/">Home</a> |
    {% if user.is_authenticated %}
     <a href="/save/">add Bookmark</a> |
+    <a gref="/search/">search</a> |
     Hello, {{ user.username }}
     (<a href="/logout">Logout</a>)
    {% else %}
